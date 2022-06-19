@@ -3,29 +3,30 @@
   <van-cell-group inset>
     <van-field
       v-model="message"
-      rows="3"
-      autosize
-      label="留言"
+      rows="5"
       type="textarea"
       maxlength="50"
       placeholder="请输入留言"
       show-word-limit
     />
+    <div class="button-group">
+      <van-row justify="space-around">
+        <van-col span="6">
+          <van-button class="button" type="success" size="small" round @click="share"
+                      loading-text="分享" :loading="shareLoading">分享
+          </van-button>
+        </van-col>
+        <van-col span="6">
+          <van-button class="button" type="warning" size="small" round @click="clear">清空</van-button>
+        </van-col>
+        <van-col span="6">
+          <van-button class="button" type="primary" size="small" round @click="send"
+                      loading-text="发送" :loading="sendLoading">发送
+          </van-button>
+        </van-col>
+      </van-row>
+    </div>
   </van-cell-group>
-  <van-row  justify="space-around">
-    <van-col span="6">
-      <van-button class="button" type="warning" round @click="clear">清空</van-button>
-    </van-col>
-    <van-col span="6">
-      <van-button class="button" type="primary" round @click="send"
-                  loading-text="发送" :loading="sendLoading">发送
-      </van-button>
-    </van-col>
-    <van-col span="6">
-      <van-button class="button" type="success" round @click="share"
-                  loading-text="分享" :loading="shareLoading">分享</van-button>
-    </van-col>
-  </van-row>
 
 </template>
 
@@ -33,6 +34,12 @@
 import TtsToggleDevice from '@/components/tts-toggle-device'
 import { ref } from 'vue'
 import request from '@/utils/request'
+import { useClipboard } from '@vueuse/core/index'
+import { Toast } from 'vant'
+
+const {
+  copy
+} = useClipboard()
 
 const message = ref('')
 const sendLoading = ref(false)
@@ -60,7 +67,8 @@ function share () {
     url: '/tts/share',
     method: 'get'
   }).then(data => {
-    console.log(data)
+    copy('http://localhost/#/praise?token=' + data.token)
+    Toast('已复制')
   }).finally(() => {
     shareLoading.value = false
   })
@@ -68,7 +76,11 @@ function share () {
 </script>
 
 <style scoped lang="scss">
-.button {
-  width: 100%;
+.button-group {
+  margin: 10px;
+
+  .button {
+    width: 100%;
+  }
 }
 </style>
