@@ -3,5 +3,7 @@
 </template>
 
 <style lang="scss">
-
+body {
+  background-color: #f7f8fa;
+}
 </style>

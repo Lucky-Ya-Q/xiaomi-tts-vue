@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Notify } from 'vant'
+import { getToken, TokenKey } from '@/utils/auth'
 
 // 创建axios实例
 const service = axios.create({
@@ -11,6 +12,9 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
+  if (getToken()) {
+    config.headers[TokenKey] = getToken()
+  }
   return config
 })
 

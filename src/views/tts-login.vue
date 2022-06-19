@@ -30,6 +30,7 @@
 import { ref } from 'vue'
 import request from '@/utils/request'
 import { useRouter } from 'vue-router'
+import { setToken } from '@/utils/auth'
 
 const router = useRouter()
 
@@ -44,6 +45,9 @@ const onSubmit = (values) => {
     data: values
   }).then(data => {
     if (data.code === 200) {
+      setToken(data.token)
+      router.push('/layout')
+    } else if (data.code === 201) {
       router.push('/no-device')
     }
   }).catch(() => {
