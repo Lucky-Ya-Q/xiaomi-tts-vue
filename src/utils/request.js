@@ -23,7 +23,7 @@ service.interceptors.response.use(res => {
   const data = res.data
   if (data.code === 500) {
     Notify(data.msg)
-    return Promise.reject(data.msg)
+    // return Promise.reject(data.msg)
   }
   return data
 })

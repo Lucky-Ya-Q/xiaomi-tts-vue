@@ -50,7 +50,7 @@ const onSubmit = (values) => {
     } else if (data.code === 201) {
       router.push('/no-device')
     }
-  }).catch(() => {
+  }).finally(() => {
     loading.value = false
   })
 }

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import login from '../views/tts-login'
 import noDevice from '../views/tts-no-device'
+import praise from '../views/tts-praise'
 import layout from '../views/tts-layout'
 import index from '../views/layout/tts-index'
 import wode from '../views/layout/tts-wode'
@@ -20,6 +21,10 @@ const routes = [
   {
     path: '/no-device',
     component: noDevice
+  },
+  {
+    path: '/praise',
+    component: praise
   },
   {
     path: '/layout',
@@ -50,7 +55,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-const whiteList = ['/login', '/no-device']
+const whiteList = ['/login', '/no-device', '/praise']
 
 router.beforeEach((to, from, next) => {
   if (getToken()) {
