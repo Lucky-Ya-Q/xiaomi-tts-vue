@@ -5,7 +5,9 @@ import { getToken, TokenKey } from '@/utils/auth'
 // 创建axios实例
 const service = axios.create({
   // axios中请求配置有baseURL选项，表示请求URL公共部分
-  baseURL: 'http://192.168.1.8:8080',
+  baseURL: process.env.NODE_ENV === 'production'
+    ? 'http://123.57.63.56:7706'
+    : 'http://192.168.1.8:8080',
   // 超时
   timeout: 10000
 })

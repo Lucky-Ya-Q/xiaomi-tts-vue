@@ -68,7 +68,9 @@ function share () {
     url: '/tts/share',
     method: 'get'
   }).then(data => {
-    copy('http://localhost/#/praise?token=' + data.token)
+    copy(process.env.NODE_ENV === 'production'
+      ? 'http://123.57.63.56:7706'
+      : 'http://192.168.1.8:8080' + '/#/praise?token=' + data.token)
     Toast('已复制')
   }).finally(() => {
     shareLoading.value = false
