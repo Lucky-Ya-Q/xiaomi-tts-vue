@@ -52,7 +52,9 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory(process.env.NODE_ENV === 'production'
+    ? '/xiaomi-tts-vue/'
+    : '/'),
   routes
 })
 const whiteList = ['/login', '/no-device', '/praise']
