@@ -69,7 +69,7 @@ function share () {
     method: 'get'
   }).then(data => {
     copy(process.env.NODE_ENV === 'production'
-      ? 'http://123.57.63.56:7706'
+      ? 'https://tts.shanyexia.top'
       : 'http://192.168.1.8:8080' + '/#/praise?token=' + data.token)
     Toast('已复制')
   }).finally(() => {
