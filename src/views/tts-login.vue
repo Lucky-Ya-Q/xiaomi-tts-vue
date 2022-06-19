@@ -34,8 +34,8 @@ import { setToken } from '@/utils/auth'
 
 const router = useRouter()
 
-const username = ref('18132087340')
-const password = ref('1553592282liu')
+const username = ref('')
+const password = ref('')
 const loading = ref(false)
 const onSubmit = (values) => {
   loading.value = true
