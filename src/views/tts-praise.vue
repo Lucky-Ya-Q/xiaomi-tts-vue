@@ -1,26 +1,33 @@
 <template>
-  <van-cell-group inset>
-    <van-field
-      v-model="message"
-      rows="5"
-      type="textarea"
-      maxlength="50"
-      placeholder="请输入留言"
-      show-word-limit
-    />
-    <div class="button-group">
-      <van-row justify="space-around">
-        <van-col span="6">
-          <van-button class="button" type="warning" size="small" round @click="clear">清空</van-button>
-        </van-col>
-        <van-col span="6">
-          <van-button class="button" type="primary" size="small" round @click="send"
-                      loading-text="发送" :loading="sendLoading">发送
-          </van-button>
-        </van-col>
-      </van-row>
-    </div>
-  </van-cell-group>
+  <van-form @submit="onSubmit">
+    <van-cell-group inset>
+      <van-field v-model="name" label="昵称" placeholder="请输入昵称"
+                 required
+                 :rules="[{ required: true, message: '请输入昵称' }]"/>
+      <van-field
+        v-model="message"
+        rows="5"
+        type="textarea"
+        maxlength="50"
+        placeholder="请输入留言"
+        show-word-limit
+        required
+        :rules="[{ required: true, message: '请输入留言' }]"
+      />
+      <div class="button-group">
+        <van-row justify="space-around">
+          <van-col span="6">
+            <van-button class="button" type="warning" size="small" round @click="clear">清空</van-button>
+          </van-col>
+          <van-col span="6">
+            <van-button class="button" native-type="submit" type="primary" size="small" round
+                        loading-text="发送" :loading="sendLoading">发送
+            </van-button>
+          </van-col>
+        </van-row>
+      </div>
+    </van-cell-group>
+  </van-form>
 </template>
 
 <script setup>
@@ -37,13 +44,13 @@ function clear () {
   message.value = ''
 }
 
-function send () {
+function onSubmit () {
   sendLoading.value = true
   request({
     url: '/tts/praise',
     method: 'post',
     data: {
-      text: message.value,
+      text: name + '说：' + message.value,
       token: route.query.token
     }
   }).then(() => {
