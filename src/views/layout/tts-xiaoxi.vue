@@ -55,8 +55,9 @@ function send () {
     url: '/tts/say',
     method: 'post',
     data: { text: message.value }
-  }).finally(() => {
+  }).then(() => {
     clear()
+  }).finally(() => {
     sendLoading.value = false
   })
 }

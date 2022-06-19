@@ -46,8 +46,9 @@ function send () {
       text: message.value,
       token: route.query.token
     }
-  }).finally(() => {
+  }).then(() => {
     clear()
+  }).finally(() => {
     sendLoading.value = false
   })
 }
