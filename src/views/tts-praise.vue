@@ -1,6 +1,6 @@
 <template>
   <van-form @submit="onSubmit">
-    <van-cell-group inset>
+    <van-cell-group inset title="留言板">
       <van-field v-model="name" label="昵称" placeholder="请输入昵称"
                  maxlength="10"
                  required
@@ -10,9 +10,9 @@
         rows="5"
         type="textarea"
         maxlength="50"
-        placeholder="请输入留言"
+        placeholder="请输入留言内容"
         show-word-limit
-        :rules="[{ required: true, message: '请输入留言' }]"
+        :rules="[{ required: true, message: '请输入留言内容' }]"
       />
       <div class="button-group">
         <van-row justify="space-around">
