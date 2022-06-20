@@ -2,6 +2,7 @@
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field v-model="name" label="昵称" placeholder="请输入昵称"
+                 maxlength="10"
                  required
                  :rules="[{ required: true, message: '请输入昵称' }]"/>
       <van-field
@@ -11,7 +12,6 @@
         maxlength="50"
         placeholder="请输入留言"
         show-word-limit
-        required
         :rules="[{ required: true, message: '请输入留言' }]"
       />
       <div class="button-group">
