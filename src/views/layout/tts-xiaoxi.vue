@@ -39,7 +39,7 @@ import { Dialog, Toast } from 'vant'
 
 const {
   copy,
-  isSupported
+  text
 } = useClipboard()
 
 const message = ref('')
@@ -73,8 +73,8 @@ function share () {
       ? 'https://shanyexia.top/xiaomi-tts-vue'
       // : 'http://192.168.1.8:8080'
       : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`
-    if (isSupported) {
-      copy(url)
+    copy(url)
+    if (text.value) {
       Toast('已复制')
     } else {
       Dialog.alert({
