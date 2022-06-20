@@ -39,7 +39,7 @@ import { Toast } from 'vant'
 
 const {
   copy,
-  text
+  isSupported
 } = useClipboard()
 
 const message = ref('')
@@ -69,11 +69,11 @@ function share () {
     url: '/tts/share',
     method: 'get'
   }).then(data => {
-    copy(`${process.env.NODE_ENV === 'production'
-      ? 'https://shanyexia.top/xiaomi-tts-vue'
-      // : 'http://192.168.1.8:8080'
-      : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`)
-    if (text) {
+    if (isSupported) {
+      copy(`${process.env.NODE_ENV === 'production'
+        ? 'https://shanyexia.top/xiaomi-tts-vue'
+        // : 'http://192.168.1.8:8080'
+        : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`)
       Toast('已复制')
     } else {
       Toast('不支持复制')
