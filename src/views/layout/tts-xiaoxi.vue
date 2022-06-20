@@ -35,7 +35,7 @@ import TtsToggleDevice from '@/components/tts-toggle-device'
 import { ref } from 'vue'
 import request from '@/utils/request'
 import { useClipboard } from '@vueuse/core/index'
-import { Toast } from 'vant'
+import { Dialog, Toast } from 'vant'
 
 const {
   copy,
@@ -69,14 +69,19 @@ function share () {
     url: '/tts/share',
     method: 'get'
   }).then(data => {
+    const url = `${process.env.NODE_ENV === 'production'
+      ? 'https://shanyexia.top/xiaomi-tts-vue'
+      // : 'http://192.168.1.8:8080'
+      : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`
     if (isSupported) {
-      copy(`${process.env.NODE_ENV === 'production'
-        ? 'https://shanyexia.top/xiaomi-tts-vue'
-        // : 'http://192.168.1.8:8080'
-        : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`)
+      copy(url)
       Toast('已复制')
     } else {
-      Toast('不支持复制')
+      Dialog.alert({
+        message: url
+      }).then(() => {
+        // on close
+      })
     }
   }).finally(() => {
     shareLoading.value = false
