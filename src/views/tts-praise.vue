@@ -37,6 +37,7 @@ import request from '@/utils/request'
 
 const route = useRoute()
 
+const name = ref('')
 const message = ref('')
 const sendLoading = ref(false)
 
@@ -50,7 +51,7 @@ function onSubmit () {
     url: '/tts/praise',
     method: 'post',
     data: {
-      text: name + '说：' + message.value,
+      text: name.value + '说：' + message.value,
       token: route.query.token
     }
   }).then(() => {

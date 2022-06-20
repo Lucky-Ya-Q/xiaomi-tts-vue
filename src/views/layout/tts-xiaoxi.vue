@@ -68,11 +68,10 @@ function share () {
     url: '/tts/share',
     method: 'get'
   }).then(data => {
-    const url = process.env.NODE_ENV === 'production'
-      ? 'https://tts.shanyexia.top'
+    copy(`${process.env.NODE_ENV === 'production'
+      ? 'https://shanyexia.top/xiaomi-tts-vue'
       // : 'http://192.168.1.8:8080'
-      : 'https://tts.shanyexia.top'
-    copy(`${url}/#/praise?token=${data.token}`)
+      : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`)
     Toast('已复制')
   }).finally(() => {
     shareLoading.value = false
