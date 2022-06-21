@@ -58,8 +58,10 @@ function warning (value) {
 
 function getVolume () {
   request({ url: '/tts/getVolume?token=' + route.query.token }).then((data) => {
+    console.log(data)
     const info = JSON.parse(data.data.info)
     volume.value = info.volume
+  }).catch(c => {
   })
 }
 
