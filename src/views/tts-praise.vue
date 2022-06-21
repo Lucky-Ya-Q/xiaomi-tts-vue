@@ -10,7 +10,7 @@
         rows="5"
         type="textarea"
         maxlength="50"
-        placeholder="请输入留言内容"
+        placeholder="说点好听的……"
         show-word-limit
         :rules="[{ required: true, message: '请输入留言内容' }]"
       />
