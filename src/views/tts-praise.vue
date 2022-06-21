@@ -27,19 +27,43 @@
         </van-row>
       </div>
     </van-cell-group>
+    <van-cell-group :title="'音量：'+volume" inset style="padding: 20px 32px;">
+      <van-slider v-model="volume" @change="setVolume"/>
+    </van-cell-group>
   </van-form>
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import request from '@/utils/request'
 
 const route = useRoute()
-
+const volume = ref(6)
 const name = ref('')
 const message = ref('')
 const sendLoading = ref(false)
+
+function getVolume () {
+  request({ url: '/tts/getVolume' }).then((data) => {
+    const info = JSON.parse(data.data.info)
+    volume.value = info.volume
+  })
+}
+
+onMounted(() => {
+  getVolume()
+})
+
+function setVolume (value) {
+  request({
+    url: '/tts/setVolume',
+    method: 'get',
+    params: { volume: value }
+  }).then(() => {
+    getVolume()
+  })
+}
 
 function clear () {
   message.value = ''
