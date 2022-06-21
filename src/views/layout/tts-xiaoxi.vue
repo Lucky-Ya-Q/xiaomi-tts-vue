@@ -28,7 +28,7 @@
     </div>
   </van-cell-group>
   <van-cell-group :title="'音量：'+volume" inset style="padding: 20px 32px;">
-    <van-slider v-model="volume" @change="setVolume"/>
+    <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
 </template>
 
@@ -36,7 +36,7 @@
 import TtsToggleDevice from '@/components/tts-toggle-device'
 import { onMounted, ref } from 'vue'
 import request from '@/utils/request'
-import { Dialog } from 'vant'
+import { Dialog, Notify } from 'vant'
 
 const message = ref('')
 const volume = ref(6)
@@ -57,6 +57,17 @@ function getVolume () {
 onMounted(() => {
   getVolume()
 })
+
+function warning (value) {
+  if (value > 50) {
+    Notify({
+      type: 'warning',
+      message: '声音太大有扰民风险'
+    })
+  } else {
+    Notify.clear()
+  }
+}
 
 function setVolume (value) {
   request({
@@ -90,8 +101,7 @@ function share () {
     Dialog.alert({
       message: `${process.env.NODE_ENV === 'production'
         ? 'https://shanyexia.top/xiaomi-tts-vue'
-        // : 'http://192.168.1.8:8080'
-        : 'https://shanyexia.top/xiaomi-tts-vue'}/#/praise?token=${data.token}`
+        : 'http://192.168.1.8'}/#/praise?token=${data.token}`
     }).then(() => {
       // on close
     })
