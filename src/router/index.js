@@ -8,6 +8,7 @@ import wode from '../views/layout/tts-wode'
 import shizhong from '../views/layout/tts-shizhong'
 import xiaoxi from '../views/layout/tts-xiaoxi'
 import { getToken } from '@/utils/auth'
+import { Notify } from 'vant'
 
 const routes = [
   {
@@ -68,6 +69,7 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
+      Notify('token不存在')
       next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
     }
   }
