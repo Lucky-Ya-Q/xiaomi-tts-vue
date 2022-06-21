@@ -46,7 +46,7 @@ const message = ref('')
 const sendLoading = ref(false)
 
 function warning (value) {
-  if (value > 50) {
+  if (value > 60) {
     Notify({
       type: 'warning',
       message: '开玩笑要有度哦'
@@ -84,7 +84,7 @@ function clear () {
 function onSubmit () {
   sendLoading.value = true
   request({
-    url: '/tts/praise?token=' + route.query.token,
+    url: '/tts/say?token=' + route.query.token,
     method: 'post',
     data: { text: name.value + '说：' + message.value }
   }).then(() => {

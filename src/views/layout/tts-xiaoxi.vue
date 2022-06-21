@@ -59,7 +59,7 @@ onMounted(() => {
 })
 
 function warning (value) {
-  if (value > 50) {
+  if (value > 60) {
     Notify({
       type: 'warning',
       message: '声音太大有扰民风险'
