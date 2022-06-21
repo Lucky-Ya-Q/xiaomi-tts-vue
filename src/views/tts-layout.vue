@@ -1,6 +1,6 @@
 <template>
   <div class="tts-layout">
-   <router-view></router-view>
+    <router-view></router-view>
   </div>
   <van-tabbar v-model="active">
     <van-tabbar-item icon="home-o">首页</van-tabbar-item>
