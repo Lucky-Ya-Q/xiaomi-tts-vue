@@ -57,7 +57,7 @@ function warning (value) {
 }
 
 function getVolume () {
-  request({ url: '/tts/getVolume?token=' + route.query.token }).then((data) => {
+  request({ url: '/tts/getVolume?type=share&token=' + route.query.token }).then((data) => {
     console.log(data)
     const info = JSON.parse(data.data.info)
     volume.value = info.volume
@@ -71,7 +71,7 @@ onMounted(() => {
 
 function setVolume (value) {
   request({
-    url: '/tts/setVolume?token=' + route.query.token,
+    url: '/tts/setVolume?type=share&token=' + route.query.token,
     method: 'get',
     params: { volume: value }
   }).then(() => {
@@ -86,7 +86,7 @@ function clear () {
 function onSubmit () {
   sendLoading.value = true
   request({
-    url: '/tts/say?token=' + route.query.token,
+    url: '/tts/say?type=share&token=' + route.query.token,
     method: 'post',
     data: { text: name.value + '说：' + message.value }
   }).then(() => {
