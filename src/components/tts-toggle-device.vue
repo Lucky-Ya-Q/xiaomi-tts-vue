@@ -10,6 +10,7 @@ import Cookies from 'js-cookie'
 import { useStore } from 'vuex'
 
 const store = useStore()
+
 const devices = computed(() => store.state.devices)
 
 const value = ref('')
