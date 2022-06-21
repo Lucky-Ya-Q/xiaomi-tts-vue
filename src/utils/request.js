@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Notify } from 'vant'
 import { getToken, TokenKey } from '@/utils/auth'
+import router from '@/router'
 
 // 创建axios实例
 const service = axios.create({
@@ -27,6 +28,8 @@ service.interceptors.response.use(res => {
   if (data.code === 500) {
     Notify(data.msg)
     // return Promise.reject(data.msg)
+  } else if (data.code === 401) {
+    router.push('/login?redirect=')
   }
   return data
 })

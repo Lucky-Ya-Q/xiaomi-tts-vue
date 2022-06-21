@@ -31,6 +31,7 @@ import { ref } from 'vue'
 import request from '@/utils/request'
 import { useRouter } from 'vue-router'
 import { setToken } from '@/utils/auth'
+import Cookies from 'js-cookie'
 
 const router = useRouter()
 
@@ -45,7 +46,8 @@ const onSubmit = (values) => {
     data: values
   }).then(data => {
     if (data.code === 200) {
-      setToken(data.token)
+      Cookies.set('deviceId', data.data.deviceId)
+      setToken(data.data.token)
       router.push('/layout')
     } else if (data.code === 201) {
       router.push('/no-device')
