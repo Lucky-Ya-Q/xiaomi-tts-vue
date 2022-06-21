@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-
 import TtsToggleDevice from '@/components/tts-toggle-device'
 </script>
 

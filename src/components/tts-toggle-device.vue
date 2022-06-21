@@ -28,7 +28,5 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.van-dropdown-menu {
-  margin-bottom: 12px;
-}
+
 </style>

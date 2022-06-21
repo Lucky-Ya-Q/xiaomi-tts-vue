@@ -1,6 +1,6 @@
 <template>
   <tts-toggle-device></tts-toggle-device>
-  <van-cell-group inset>
+  <van-cell-group title="留言板" inset>
     <van-field
       v-model="message"
       rows="5"
@@ -27,21 +27,45 @@
       </van-row>
     </div>
   </van-cell-group>
-
+  <van-cell-group :title="'音量：'+volume" inset style="padding: 20px 32px;">
+    <van-slider v-model="volume" @change="setVolume"/>
+  </van-cell-group>
 </template>
 
 <script setup>
 import TtsToggleDevice from '@/components/tts-toggle-device'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import request from '@/utils/request'
 import { Dialog } from 'vant'
 
 const message = ref('')
+const volume = ref(6)
 const sendLoading = ref(false)
 const shareLoading = ref(false)
 
 function clear () {
   message.value = ''
+}
+
+function getVolume () {
+  request({ url: '/tts/getVolume' }).then((data) => {
+    const info = JSON.parse(data.data.info)
+    volume.value = info.volume
+  })
+}
+
+onMounted(() => {
+  getVolume()
+})
+
+function setVolume (value) {
+  request({
+    url: '/tts/setVolume',
+    method: 'get',
+    params: { volume: value }
+  }).then(() => {
+    getVolume()
+  })
 }
 
 function send () {
