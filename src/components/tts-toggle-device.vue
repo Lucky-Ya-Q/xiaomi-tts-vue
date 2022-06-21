@@ -18,10 +18,11 @@ value.value = Cookies.get('deviceId')
 
 function useDevice (value) {
   console.log('切换指定设备', value)
-  // TODO: 2022/6/21 切换指定设备
+  // TODO: 2022/6/21 由于没有多个设备就不测试了
 }
 
 onMounted(() => {
+  if (devices.value.length) return
   store.dispatch('setDevices')
 })
 </script>

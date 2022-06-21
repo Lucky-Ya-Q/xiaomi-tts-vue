@@ -13,7 +13,6 @@ export default createStore({
   },
   actions: {
     setDevices (context) {
-      if (context.state.devices.length) return
       request({ url: '/tts/getDevice' }).then((data) => {
         for (const device of data.data) {
           device.text = device.alias
