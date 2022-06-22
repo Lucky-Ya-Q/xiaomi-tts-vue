@@ -6,7 +6,7 @@
       rows="5"
       type="textarea"
       maxlength="50"
-      placeholder="请输入留言"
+      placeholder="请输入留言内容"
       show-word-limit
     />
     <div class="button-group">
