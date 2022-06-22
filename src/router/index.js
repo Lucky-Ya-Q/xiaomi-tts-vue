@@ -69,8 +69,8 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      Notify('token不存在')
       next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+      Notify('token不存在')
     }
   }
 })
