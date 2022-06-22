@@ -29,12 +29,13 @@
 <script setup>
 import { ref } from 'vue'
 import request from '@/utils/request'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { setToken } from '@/utils/auth'
 import Cookies from 'js-cookie'
 import { useStore } from 'vuex'
 
 const router = useRouter()
+const route = useRoute()
 const store = useStore()
 
 const username = ref('')
@@ -51,7 +52,11 @@ const onSubmit = (values) => {
       store.dispatch('setDevices')
       Cookies.set('deviceId', data.data.deviceId)
       setToken(data.data.token)
-      router.push('/layout')
+      if (route.query.redirect) {
+        router.push(route.query.redirect)
+      } else {
+        router.push('/layout')
+      }
     } else if (data.code === 201) {
       router.push('/no-device')
     }
