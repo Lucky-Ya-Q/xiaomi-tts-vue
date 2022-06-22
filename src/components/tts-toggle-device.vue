@@ -1,7 +1,9 @@
 <template>
-  <van-dropdown-menu active-color="#1989fa" z-index="999">
-    <van-dropdown-item v-model="value" :options="devices" @change="useDevice"/>
-  </van-dropdown-menu>
+  <van-sticky>
+    <van-dropdown-menu active-color="#1989fa" z-index="999">
+      <van-dropdown-item v-model="value" :options="devices" @change="useDevice"/>
+    </van-dropdown-menu>
+  </van-sticky>
 </template>
 
 <script setup>
