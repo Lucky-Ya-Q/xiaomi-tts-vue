@@ -74,11 +74,10 @@ const onSubmit = (values) => {
 <style scoped lang="scss">
 .tts-login {
   padding-top: 50px;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background: white;
 
   .title {
-    font-weight: normal;
     text-align: center;
   }
 
