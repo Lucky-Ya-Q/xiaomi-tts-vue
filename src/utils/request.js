@@ -28,7 +28,7 @@ service.interceptors.response.use(res => {
     Notify(data.msg)
     return Promise.reject(data.msg)
   } else if (data.code === 401) {
-    router.push('/login')
+    router.push(`/login?redirect=${router.currentRoute.value.fullPath}`)
     Notify(data.msg)
     return Promise.reject(data.msg)
   }
