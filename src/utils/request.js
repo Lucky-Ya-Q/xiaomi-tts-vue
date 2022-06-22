@@ -28,8 +28,9 @@ service.interceptors.response.use(res => {
     Notify(data.msg)
     return Promise.reject(data.msg)
   } else if (data.code === 401) {
-    Notify(data.msg)
     router.push('/login')
+    Notify(data.msg)
+    return Promise.reject(data.msg)
   }
   return data
 })
