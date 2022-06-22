@@ -27,13 +27,13 @@
       </van-row>
     </div>
   </van-cell-group>
-  <van-cell-group :title="'音量：'+volume" inset style="padding: 20px 32px;">
+  <van-cell-group :title="'音量：' + volume" inset style="padding: 20px 32px;">
     <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
   <van-dialog v-model:show="show" :showConfirmButton="false" :closeOnClickOverlay="true">
-    <div style="width: 100%;margin: 25px 0;text-align: center;">
+    <div style="width: 100%; margin: 25px 0; text-align: center;">
       <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
-      <p style="font-size: 14px; margin-top: 0;color:#646566;">扫描上方二维码，控制我的音箱</p>
+      <p style="font-size: 14px; margin-top: 0; color:#646566;">扫描上方二维码，控制我的音箱</p>
     </div>
   </van-dialog>
 </template>
