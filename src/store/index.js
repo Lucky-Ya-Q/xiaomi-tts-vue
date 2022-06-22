@@ -7,7 +7,7 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    'SET-DEVICES' (state, payload) {
+    SET_DEVICES (state, payload) {
       state.devices = payload.devices
     }
   },
@@ -18,7 +18,7 @@ export default createStore({
           device.text = device.alias
           device.value = device.deviceID
         }
-        context.commit('SET-DEVICES', { devices: data.data })
+        context.commit('SET_DEVICES', { devices: data.data })
       })
     }
   },
