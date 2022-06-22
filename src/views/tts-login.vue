@@ -95,14 +95,16 @@ const onSubmit = (values) => {
     }
   }
 
-  .van-cell-group {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+  .van-form {
+    .van-cell-group {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
 
-  .van-button {
-    width: 80%;
-    margin: auto;
+    .van-button {
+      width: 80%;
+      margin: auto;
+    }
   }
 }
 </style>
