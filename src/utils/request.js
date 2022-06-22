@@ -29,7 +29,7 @@ service.interceptors.response.use(res => {
     return Promise.reject(data.msg)
   } else if (data.code === 401) {
     Notify(data.msg)
-    router.push('/login?redirect=')
+    router.push('/login')
   }
   return data
 })
