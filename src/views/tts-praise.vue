@@ -1,6 +1,6 @@
 <template>
   <van-form @submit="onSubmit">
-    <van-cell-group inset :title="`给”${route.query.name}“留言`">
+    <van-cell-group inset :title="`给“${route.query.name}”留言`">
       <van-field v-model="name" label="昵称" placeholder="请输入昵称"
                  maxlength="10"
                  required
