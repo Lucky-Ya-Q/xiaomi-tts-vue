@@ -1,6 +1,6 @@
 <template>
   <van-form @submit="onSubmit">
-    <van-cell-group inset title="留言板">
+    <van-cell-group inset :title="`给”${route.query.name}“留言`">
       <van-field v-model="name" label="昵称" placeholder="请输入昵称"
                  maxlength="10"
                  required
@@ -10,7 +10,7 @@
         rows="5"
         type="textarea"
         maxlength="50"
-        placeholder="说点好听的……"
+        placeholder="说亿点好听的……"
         show-word-limit
         :rules="[{ required: true, message: '请输入留言内容' }]"
       />

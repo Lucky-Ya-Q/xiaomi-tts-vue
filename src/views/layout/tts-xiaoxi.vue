@@ -12,7 +12,7 @@
     <div class="button-group">
       <van-row justify="space-around">
         <van-col span="6">
-          <van-button class="button" type="success" size="small" round @click="share"
+          <van-button class="button" type="success" size="small" round @click="info = true"
                       loading-text="分享" :loading="shareLoading">分享
           </van-button>
         </van-col>
@@ -30,9 +30,21 @@
   <van-cell-group :title="'音量：' + volume" inset style="padding: 20px 32px;">
     <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
+  <van-dialog v-model:show="info" show-cancel-button @confirm="confirm">
+    <van-field style="margin: 20px;" v-model="name" placeholder="请输入临时昵称"/>
+  </van-dialog>
   <van-dialog v-model:show="show" :showConfirmButton="false" :closeOnClickOverlay="true">
     <div style="width: 100%; margin: 25px 0; text-align: center;">
-      <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
+      <!--      <div style="width: 16%; position: absolute;-->
+      <!--              top: 50%;-->
+      <!--              left: 50%; border: 1px solid black;-->
+      <!--              transform: translate(-50%,-50%); padding: 5px; background-color:#fff; border-radius: 8px;">-->
+      <!--        <img style="width: 100%; border-radius: 8px; display: block;"-->
+      <!--             src="https://q2.qlogo.cn/headimg_dl?dst_uin=1553592282&spec=5" alt="img">-->
+      <!--      </div>-->
+      <div>
+        <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
+      </div>
       <p style="font-size: 14px; margin-top: 0; color:#646566;">扫描上方二维码，控制我的音箱</p>
     </div>
   </van-dialog>
@@ -45,6 +57,8 @@ import request from '@/utils/request'
 import { Notify } from 'vant'
 import { useQRCode } from '@vueuse/integrations/useQRCode'
 
+const name = ref('')
+const info = ref(false)
 const message = ref('')
 const volume = ref(6)
 const show = ref(false)
@@ -79,6 +93,10 @@ function warning (value) {
   }
 }
 
+function confirm () {
+  share()
+}
+
 function setVolume (value) {
   request({
     url: '/tts/setVolume',
@@ -110,7 +128,7 @@ function share () {
   }).then(data => {
     url.value = `${process.env.NODE_ENV === 'production'
       ? 'https://shanyexia.top/xiaomi-tts-vue'
-      : 'http://192.168.1.8'}/#/praise?token=${data.token}`
+      : 'http://192.168.1.8'}/#/praise?token=${data.token}&name=${name.value}`
     show.value = true
   }).finally(() => {
     shareLoading.value = false
