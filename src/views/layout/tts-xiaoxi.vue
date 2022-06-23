@@ -31,10 +31,11 @@
     <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
   <van-dialog v-model:show="info" show-cancel-button @confirm="confirm">
-    <van-field style="margin: 20px;" v-model="name" placeholder="请输入临时昵称"/>
+    <van-field style="padding: 20px;" v-model="name" maxlength="10" placeholder="请输入临时昵称"/>
   </van-dialog>
   <van-dialog v-model:show="show" :showConfirmButton="false" :closeOnClickOverlay="true">
     <div style="width: 100%; margin: 25px 0; text-align: center;">
+      <h3 style="margin-bottom: 5px;">{{ name }}</h3>
       <!--      <div style="width: 16%; position: absolute;-->
       <!--              top: 50%;-->
       <!--              left: 50%; border: 1px solid black;-->
