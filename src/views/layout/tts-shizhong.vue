@@ -43,7 +43,4 @@ function select (day) {
   background-color: transparent;
   color: #1989fa;
 }
-.van-calendar{
-  padding-bottom: 10px;
-}
 </style>
