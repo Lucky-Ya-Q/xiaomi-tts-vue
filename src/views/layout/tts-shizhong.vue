@@ -44,7 +44,7 @@ function select (day) {
   color: #1989fa;
 }
 
-::v-deep(.van-calendar__days) {
-  padding-bottom: 4px;
+::v-deep(.van-calendar__day) {
+  margin-bottom: 4px !important;
 }
 </style>
