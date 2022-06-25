@@ -1,5 +1,5 @@
 <template>
-  <!--  <tts-toggle-device></tts-toggle-device>-->
+  <tts-toggle-device></tts-toggle-device>
   <van-cell-group title="打卡记录" inset>
     <van-calendar
       :min-date="date1"
@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+import TtsToggleDevice from '@/components/tts-toggle-device'
 import { ref } from 'vue'
 
 const date1 = ref(new Date('2022-04-08'))
