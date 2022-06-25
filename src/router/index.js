@@ -5,7 +5,7 @@ import praise from '../views/tts-praise'
 import layout from '../views/tts-layout'
 import index from '../views/layout/tts-index'
 import wode from '../views/layout/tts-wode'
-import shizhong from '../views/layout/tts-shizhong'
+import daka from '../views/layout/tts-daka'
 import xiaoxi from '../views/layout/tts-xiaoxi'
 import { getToken } from '@/utils/auth'
 import { Notify } from 'vant'
@@ -45,8 +45,8 @@ const routes = [
         component: xiaoxi
       },
       {
-        path: 'shizhong',
-        component: shizhong
+        path: 'daka',
+        component: daka
       }
     ]
   }

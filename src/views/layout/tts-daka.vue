@@ -13,7 +13,7 @@
       :style="{ height: '344px' }"
     >
       <template #bottom-info>
-        <div style="color:#969799; position: relative; top: 5px;">160</div>
+<!--        <div style="color:#969799; position: relative; top: 5px;">160</div>-->
       </template>
     </van-calendar>
   </van-cell-group>
