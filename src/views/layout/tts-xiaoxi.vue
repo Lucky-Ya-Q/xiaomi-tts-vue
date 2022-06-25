@@ -36,7 +36,7 @@
   </van-dialog>
   <van-dialog v-model:show="show" :showConfirmButton="false" :closeOnClickOverlay="true">
     <div style="width: 100%; margin: 25px 0; text-align: center;">
-      <h3 style="margin-bottom: 5px;">{{ name }}</h3>
+      <h3 style="margin-bottom: 5px; color:#323233;">{{ name }}</h3>
       <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
       <p style="font-size: 14px; margin-top: 0; color:#646566;">扫描上方二维码，控制我的音箱</p>
     </div>
