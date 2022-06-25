@@ -12,6 +12,7 @@
     "@vueuse/integrations": "^8.7.4",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "js-audio-recorder": "^1.0.7",
     "js-cookie": "^3.0.1",
     "qrcode": "^1.5.0",
     "vant": "^3.5.1",

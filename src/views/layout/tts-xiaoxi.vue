@@ -30,22 +30,14 @@
   <van-cell-group :title="'音量：' + volume" inset style="padding: 20px 32px;">
     <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
+
   <van-dialog v-model:show="info" show-cancel-button @confirm="confirm">
     <van-field style="padding: 20px;" v-model="name" maxlength="10" placeholder="请输入临时昵称"/>
   </van-dialog>
   <van-dialog v-model:show="show" :showConfirmButton="false" :closeOnClickOverlay="true">
     <div style="width: 100%; margin: 25px 0; text-align: center;">
       <h3 style="margin-bottom: 5px;">{{ name }}</h3>
-      <!--      <div style="width: 16%; position: absolute;-->
-      <!--              top: 50%;-->
-      <!--              left: 50%; border: 1px solid black;-->
-      <!--              transform: translate(-50%,-50%); padding: 5px; background-color:#fff; border-radius: 8px;">-->
-      <!--        <img style="width: 100%; border-radius: 8px; display: block;"-->
-      <!--             src="https://q2.qlogo.cn/headimg_dl?dst_uin=1553592282&spec=5" alt="img">-->
-      <!--      </div>-->
-      <div>
-        <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
-      </div>
+      <img style="width: 80%;" :src="qrcode" alt="qrcode"/>
       <p style="font-size: 14px; margin-top: 0; color:#646566;">扫描上方二维码，控制我的音箱</p>
     </div>
   </van-dialog>

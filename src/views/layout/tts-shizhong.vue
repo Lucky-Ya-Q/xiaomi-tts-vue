@@ -20,7 +20,6 @@
 </template>
 
 <script setup>
-// import TtsToggleDevice from '@/components/tts-toggle-device'
 import { ref } from 'vue'
 
 const date1 = ref(new Date('2022-04-08'))
@@ -39,8 +38,13 @@ function select (day) {
 <style scoped lang="scss">
 ::v-deep(.bgi) {
 }
+
 ::v-deep(.van-calendar__selected-day) {
   background-color: transparent;
   color: #1989fa;
+}
+
+::v-deep(.van-calendar__days) {
+  padding-bottom: 4px;
 }
 </style>
