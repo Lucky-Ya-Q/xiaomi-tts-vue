@@ -1,4 +1,9 @@
 <template>
+  <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o">
+    发送成功后{{ route.query.name ? route.query.name : '分享者' }}的小爱音箱会以{{ volume }}%的音量播放
+    <van-icon name="volume-o"/>
+    [昵称]说：[留言内容…]
+  </van-notice-bar>
   <van-form @submit="onSubmit">
     <van-cell-group inset title="留言板">
       <van-field v-model="name" label="昵称" placeholder="请输入昵称"
@@ -37,7 +42,7 @@
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import request from '@/utils/request'
-import { Notify } from 'vant'
+import { Notify, Toast } from 'vant'
 
 const route = useRoute()
 const volume = ref(6)
@@ -65,9 +70,6 @@ function getVolume () {
 }
 
 onMounted(() => {
-  if (route.query.name) {
-    document.title = `给“${route.query.name}”留言`
-  }
   getVolume()
 })
 
@@ -93,6 +95,10 @@ function onSubmit () {
     data: { text: name.value + '说：' + message.value }
   }).then(() => {
     clear()
+    Toast({
+      message: '发送成功',
+      position: 'bottom'
+    })
   }).finally(() => {
     sendLoading.value = false
   })
