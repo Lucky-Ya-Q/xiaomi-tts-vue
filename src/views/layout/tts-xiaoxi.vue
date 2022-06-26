@@ -27,7 +27,7 @@
       </van-row>
     </div>
   </van-cell-group>
-  <van-cell-group :title="'音量：' + volume" inset style="padding: 20px 32px;">
+  <van-cell-group :title="'音量：' + volume + '%'" inset style="padding: 20px 32px;">
     <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
   </van-cell-group>
 

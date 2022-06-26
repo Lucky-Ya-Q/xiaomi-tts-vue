@@ -10,7 +10,7 @@
         rows="5"
         type="textarea"
         maxlength="50"
-        placeholder="说亿点好听的……"
+        placeholder="说点好听的……"
         show-word-limit
         :rules="[{ required: true, message: '请输入留言内容' }]"
       />
@@ -27,7 +27,7 @@
         </van-row>
       </div>
     </van-cell-group>
-    <van-cell-group :title="'音量：' + volume" inset style="padding: 20px 32px;">
+    <van-cell-group :title="'音量：' + volume + '%'" inset style="padding: 20px 32px;">
       <van-slider v-model="volume" @change="setVolume" @update:model-value="warning"/>
     </van-cell-group>
   </van-form>
